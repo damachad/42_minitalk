@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:25 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/21 15:26:50 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:50:52 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ void	handler(int sign, siginfo_t *info, void *content)
 			if (kill(info->si_pid, SIGUSR1) == -1)
 				ft_printf("Error. Failed to send SIGUSR1\n");
 		}
-		ft_putchar_fd(character, 1);
+		if (character != '\0')
+		{	
+			ft_putchar_fd(character, 1);
+			kill(info->si_pid, SIGUSR2);
+		}
 		bit = 0;
 		character = 0;
 	}

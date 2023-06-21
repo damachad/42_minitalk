@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/21 15:20:48 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:52:20 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 /*Send specific character, bit by bit.
 Iterate through each bit of the current character and uses the bitwise AND 
-operator to check its value. If the current bit is 1, send SIGUSR1, else (bit is 0)
-send SIGUSR2. Sleep for 400 miliseconds between each signal.*/
+operator to check its value. If the current bit is 1, send SIGUSR1, else 
+(bit is 0) send SIGUSR2. Sleep for 400 miliseconds between each signal.*/
 
 void	send_char(int server_pid, char c)
 {
@@ -43,8 +43,8 @@ void	send_char(int server_pid, char c)
 
 /*Send message, character by character, bit by bit.
 Iterate through each bit of the current character and uses the bitwise AND 
-operator to check its value. If the current bit is 1, send SIGUSR1, else (bit is 0)
-send SIGUSR2. Sleep for 400 miliseconds between each signal.*/
+operator to check its value. If the current bit is 1, send SIGUSR1, else 
+(bit is 0) send SIGUSR2. Sleep for 400 miliseconds between each signal.*/
 
 void	send_bits(int server_pid, char *msg)
 {
@@ -77,16 +77,15 @@ void	send_bits(int server_pid, char *msg)
 
 void	handler(int sign)
 {
+	static int	count;
+
 	if (sign == SIGUSR1)
 	{
-		ft_printf("Message received by server.\n");
+		ft_printf("Message received.\n%d characters printed.\n", (count - 1));
 		exit(0);
 	}
 	else
-	{
-		ft_printf("Error: Message not received by server.\n");
-		exit(1);
-	}
+		count++;
 }
 
 /*Validate number of arguments and send the message to the send_bits function*/
