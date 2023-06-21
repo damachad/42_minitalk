@@ -1,6 +1,6 @@
 # Minitalk
 The purpose of this project is to code a small data exchange program between a *client* and a *server* using only two UNIX signals (SIGUSR1 and SIGUSR2).
-Allowed functions:
+Allowed functions:   
 ```
 ◦ write
 ◦ ft_printf and any equivalent YOU coded
@@ -17,3 +17,9 @@ Allowed functions:
 ◦ usleep
 ◦ exit
 ```
+The *server* must be started first and, after its launch, it has to print its PID.   
+The *client* takes two arguments: server PID and a string to send to the *server*.   
+Once the string has been received, the *server* must print it.   
+The *server* has to display the string pretty quickly and should be able to receive strings from several clients in a row without needing to restart.   
+
+In the bonus part of this project the *server* acknowledges every message received by sending back a signal to the *client*.
