@@ -17,9 +17,7 @@ Allowed functions:
 ◦ usleep
 ◦ exit
 ```
-The *server* must be started first and, after its launch, it has to print its PID.   
-The *client* takes two arguments: server PID and a string to send to the *server*.   
-Once the string has been received, the *server* must print it.   
+The *server* must be started first and, after its launch, it has to print its PID. The *client* takes two arguments: server PID and a string to send to the *server*. Once the string has been received, the *server* must print it.   
 The *server* has to display the string pretty quickly and should be able to receive strings from several clients in a row without needing to restart.   
 
 In the bonus part of this project the *server* acknowledges every message received by sending back a signal to the *client*.
