@@ -6,11 +6,14 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:25 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/21 13:13:06 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:26:50 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
+
+/*Build the character to be printed from the received bits, based on the signal.
+When the whole message is received, send a signal to client.*/
 
 void	handler(int sign, siginfo_t *info, void *content)
 {

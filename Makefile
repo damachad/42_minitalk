@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 08:29:51 by damachad          #+#    #+#              #
-#    Updated: 2023/06/21 11:50:52 by damachad         ###   ########.fr        #
+#    Updated: 2023/06/21 15:09:51 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,32 +21,28 @@ OBJ_BNS = $(SRC_BNS:.c=.o)
 
 all: client server
 
-$(LIBFT):
-	@make -C ./libft
-
 client: client.o $(LIBFT)
-	@$(CC) $(CFLAGS) $< libft/libft.a -o $@
-	@echo "client created"
+	$(CC) $(CFLAGS) $< libft/libft.a -o $@
 
 server: server.o $(LIBFT)
-	@$(CC) $(CFLAGS) $< libft/libft.a -o $@
-	@echo "server created"
+	$(CC) $(CFLAGS) $< libft/libft.a -o $@
+
+$(LIBFT):
+	make -C ./libft
 
 bonus: $(OBJ_BNS) $(LIBFT)
-	@$(CC) $(CFLAGS) client_bonus.o libft/libft.a -o client_bonus
-	@$(CC) $(CFLAGS) server_bonus.o libft/libft.a -o server_bonus
-	@echo "client_bonus and server_bonus created"
-	
+	$(CC) $(CFLAGS) client_bonus.o libft/libft.a -o client_bonus
+	$(CC) $(CFLAGS) server_bonus.o libft/libft.a -o server_bonus
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
 clean:
-	@$(RM) $(OBJ) $(OBJ_BNS)
-	@echo "minitalk objs removed"
-	@make -C libft clean
-	
+	$(RM) $(OBJ) $(OBJ_BNS)
+	make -C ./libft clean
 
 fclean: clean
-	@$(RM) client server client_bonus server_bonus
-	@echo "executables removed"
-	@make -C libft fclean
+	$(RM) client server client_bonus server_bonus ./libft/libft.a
 
 re: fclean all
 

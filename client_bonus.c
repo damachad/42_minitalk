@@ -6,16 +6,16 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/21 14:17:39 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:20:48 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-/*Send message, character by character, bit by bit.
-Iterate through each bit of the current character. 
-If the current bit is 1, send SIGUSR1, else (bit is 0) send SIGUSR2.
-Sleep for 400 miliseconds between each signal.*/
+/*Send specific character, bit by bit.
+Iterate through each bit of the current character and uses the bitwise AND 
+operator to check its value. If the current bit is 1, send SIGUSR1, else (bit is 0)
+send SIGUSR2. Sleep for 400 miliseconds between each signal.*/
 
 void	send_char(int server_pid, char c)
 {
@@ -40,6 +40,11 @@ void	send_char(int server_pid, char c)
 		usleep(400);
 	}
 }
+
+/*Send message, character by character, bit by bit.
+Iterate through each bit of the current character and uses the bitwise AND 
+operator to check its value. If the current bit is 1, send SIGUSR1, else (bit is 0)
+send SIGUSR2. Sleep for 400 miliseconds between each signal.*/
 
 void	send_bits(int server_pid, char *msg)
 {
@@ -68,6 +73,8 @@ void	send_bits(int server_pid, char *msg)
 	}
 }
 
+/*Handle behaviour when SIGUSR1 or SIGUSR2 received*/
+
 void	handler(int sign)
 {
 	if (sign == SIGUSR1)
@@ -81,6 +88,8 @@ void	handler(int sign)
 		exit(1);
 	}
 }
+
+/*Validate number of arguments and send the message to the send_bits function*/
 
 int	main(int argc, char **argv)
 {
