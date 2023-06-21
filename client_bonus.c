@@ -73,7 +73,8 @@ void	send_bits(int server_pid, char *msg)
 	}
 }
 
-/*Handle behaviour when SIGUSR1 or SIGUSR2 received*/
+/*Create a counter for every character printed and, when 
+full message is received by the server, print the counter*/
 
 void	handler(int sign)
 {
