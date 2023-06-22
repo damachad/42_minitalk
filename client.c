@@ -27,9 +27,15 @@ void	send_bits(char c, int server_pid)
 	while (bit < 8)
 	{
 		if (c & z)
-			kill(server_pid, SIGUSR1);
+		{	
+			if (kill(server_pid, SIGUSR1) == -1)
+				ft_printf("Error. Failed to send SIGUSR1.\n");
+		}
 		else
-			kill(server_pid, SIGUSR2);
+		{	
+			if (kill(server_pid, SIGUSR2) == -1)
+				ft_printf("Error. Failed to send SIGUSR2.\n");
+		}
 		z >>= 1;
 		bit++;
 		usleep(100);
