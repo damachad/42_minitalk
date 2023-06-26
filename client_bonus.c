@@ -82,7 +82,7 @@ void	handler(int sign)
 
 	if (sign == SIGUSR1)
 	{
-		ft_printf("Message received.\n%d characters printed.\n", (count - 1));
+		ft_printf("Message received.\n%d bytes.\n", (count - 1));
 		exit(0);
 	}
 	else
