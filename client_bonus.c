@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/21 15:52:20 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 15:22:26 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ operator to check its value. If the current bit is 1, send SIGUSR1, else
 
 void	send_bits(int server_pid, char *msg)
 {
-	int	bit;
-	int	z;
+	int				bit;
+	unsigned char	z;
 
 	while (*msg)
 	{
@@ -109,7 +109,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("Invalid number of arguments.\n");
 		ft_printf("Usage: ./client [server PID] [message]\n");
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	while (1)
 		pause();

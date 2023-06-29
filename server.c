@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:25 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/21 15:11:13 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:33:51 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static void	handler(int sign)
 {
 	static int	bit;
-	static int	character;
+	static char	character;
 
 	if (sign == SIGUSR1)
 		character += 1 << (7 - bit);

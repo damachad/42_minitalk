@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 09:45:15 by damachad          #+#    #+#             */
-/*   Updated: 2023/06/20 12:49:41 by damachad         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:59:49 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,17 @@ Sleep for 100 miliseconds between each signal.*/
 
 void	send_bits(char c, int server_pid)
 {
-	int	bit;
-	int	z;
+	int				bit;
+	unsigned char	z;
 
 	bit = 0;
 	z = 128;
 	while (bit < 8)
 	{
 		if (c & z)
-		{	
-			if (kill(server_pid, SIGUSR1) == -1)
-				ft_printf("Error. Failed to send SIGUSR1.\n");
-		}
+			kill(server_pid, SIGUSR1);
 		else
-		{	
-			if (kill(server_pid, SIGUSR2) == -1)
-				ft_printf("Error. Failed to send SIGUSR2.\n");
-		}
+			kill(server_pid, SIGUSR2);
 		z >>= 1;
 		bit++;
 		usleep(100);
@@ -65,7 +59,7 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("Invalid number of arguments.\n");
 		ft_printf("Usage: ./client [server PID] [message]\n");
-		exit(EXIT_FAILURE);
+		return (1);
 	}
 	return (0);
 }
