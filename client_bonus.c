@@ -37,7 +37,7 @@ void	send_char(int server_pid, char c)
 				ft_printf("Error: Unable to send SIGUSR2.\n");
 		}
 		z >>= 1;
-		usleep(200);
+		usleep(100);
 	}
 }
 
@@ -62,7 +62,7 @@ void	send_bits(int server_pid, char *msg)
 			else
 				kill(server_pid, SIGUSR2);
 			z >>= 1;
-			usleep(200);
+			usleep(100);
 		}
 		msg++;
 	}
