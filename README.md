@@ -1,21 +1,34 @@
-# Minitalk
-The purpose of this project is to code a small data exchange program between a *client* and a *server* using only two UNIX signals (SIGUSR1 and SIGUSR2).
-Allowed functions (besides the ones previously coded in the Libft project):   
+# MiniTalk - UNIX Signal Data Exchange 📡
 
-* write
-* signal
-* sigemptyset
-* sigaddset
-* sigaction
-* kill
-* getpid
-* malloc
-* free
-* pause
-* sleep
-* usleep
-* exit
+MiniTalk is a small data exchange program between a client and a server, designed to operate using only two UNIX signals: SIGUSR1 and SIGUSR2. This project was completed as part of the 42 curriculum.
 
-First, the *server* must be started and, after its launch, it has to print its PID. The *client* then takes two arguments: the *server*'s PID and a string to send to the *server*. Once the string has been received, the *server* must print it. Furthermore, the *server* has to display the string pretty quickly and should be able to receive strings from several clients in a row without needing to restart. 
-   
-In the bonus part of this project the *server* acknowledges every message received by sending back a signal to the *client*. Unicode characters must be supported as well.
+## Purpose 🎯
+The primary purpose of this project is to create a simple communication system using UNIX signals. It demonstrates the use of signals for interprocess communication between a server and multiple clients.
+
+## Allowed Functions ✅
+In this project, you are allowed to use the following functions in addition to those previously coded in the Libft project:
+
+- `write`
+- `signal`
+- `sigemptyset`
+- `sigaddset`
+- `sigaction`
+- `kill`
+- `getpid`
+- `malloc`
+- `free`
+- `pause`
+- `sleep`
+- `usleep`
+- `exit`
+
+## Getting Started 🚀
+1. Start the server, which will print its Process ID (PID) after launch.
+2. The client takes two arguments:
+   - The server's PID.
+   - A string to send to the server.
+3. Once the server receives the string, it will print it (pretty quickly).
+4. The server is designed to handle multiple client connections in succession without needing to restart.
+
+## Bonus Features 🔁
+In the bonus part of this project, the server acknowledges every message received by sending back a signal to the client. Additionally, MiniTalk supports Unicode characters for enhanced functionality.
